@@ -1,20 +1,27 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.9-slim'
+            args '-u root:root'
+        }
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/oumaymamansri/JenkinsP.git'
+                checkout scm
             }
         }
-        stage('Build Docker Image') {
+
+        stage('Install dependencies') {
             steps {
-                sh 'docker build -t calculator-app .'
+                sh 'pip install -r requirements.txt'
             }
         }
+
         stage('Run App') {
             steps {
-                sh 'docker run -it --rm calculator-app'
+                sh 'python main.py'
             }
         }
     }
