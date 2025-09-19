@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/oumaymamansri/JenkinsP.git'
+                git branch: 'main', url: 'https://github.com/oumaymamansri/JenkinsP.git'
             }
         }
         stage('Install dependencies') {
