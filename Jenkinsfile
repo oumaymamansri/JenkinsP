@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/TON-UTILISATEUR/calculator-app.git'
+                git 'https://github.com/oumaymamnsri/JenkinsP.git'
             }
         }
         stage('Install dependencies') {
